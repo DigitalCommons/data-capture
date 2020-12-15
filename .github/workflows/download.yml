@@ -1,0 +1,41 @@
+name: Data download
+
+# Usage: see README.md
+on: workflow_dispatch
+
+env:
+  URL: https://docs.google.com/spreadsheets/d/<ref>/gviz/tq?tqx=out:csv&gid=0&headers=1
+  FILE: data.csv
+  AUTHOR_NAME: ${{ github.actor }}
+  AUTHOR_EMAIL: github-actions@solidarityeconomy.coop
+  COMMIT_MESSAGE: "updated by run ${{ github.run_number }} of ${{ github.workflow }}"
+
+jobs: 
+  run:
+    name: Download and commit data
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+
+    - name: Extract branch name, set file name
+      run: |
+        REF=${{ github.ref }}
+        echo "FILE=${REF#refs/heads/}/$FILE" >> $GITHUB_ENV
+
+    - name: Get data
+      run: curl "$URL" --create-dirs --output "$FILE"
+
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v5
+      with:
+        author_name: 
+        author_email: ${{ env.EMAIL }}
+        message: |
+          ${{ env.FILE }} - ${{ env.COMMIT_MESSAGE }}
+        add: "${{ env.FILE }}"
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+
