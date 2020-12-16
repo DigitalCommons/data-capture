@@ -4,7 +4,7 @@ name: Data download
 on: workflow_dispatch
 
 env:
-  URL: https://docs.google.com/spreadsheets/d/<ref>/gviz/tq?tqx=out:csv&gid=0&headers=1
+  URL: ${{ secrets.DEEP_ADAPTATION_URL }}
   FILE: data.csv
   AUTHOR_NAME: ${{ github.actor }}
   AUTHOR_EMAIL: github-actions@solidarityeconomy.coop
