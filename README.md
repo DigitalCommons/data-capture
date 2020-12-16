@@ -177,7 +177,19 @@ The Github recommened way of authenticating apps like this one seems
 to be to use the OAuth2 protocol.  However, implementing this looks
 especially complicated and is currently deferred as a step for the
 future. There are details in [Ben Collins article][] about using the
-Gitub API from Google Scripts.]*
+Gitub API from Google Scripts.
+
+What we are currently doing instead is using the dedicated user
+account [sea-bot][]. In addition to being simpler to authenticate,
+this has an advantage it being possible to limit the scope to just one
+repository, and to be independent of any of the developers working on
+the project.
+
+To use it, a [personal access token][creating a personal access token]
+needs to be created usnig the `sea-bot` account, with `repo` access
+scope, and the `sea-bot` user granted "Write" access to the
+repository. These are inserted into the Google Script's properties as
+described above.]*
 
 *[**Changing Properties**: I have found that the Script Properties tab
 only allowed new properties to be added the first time I used it.
@@ -282,3 +294,4 @@ to check this.)
 [open-data]: https://github.com/SolidarityEconomyAssociation/open-data
 [Properties Service API]: https://developers.google.com/apps-script/guides/properties
 [Ben Collins article]: https://www.benlcollins.com/apps-script/oauth-github/
+[sea-bot]: 
