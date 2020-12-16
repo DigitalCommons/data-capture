@@ -171,7 +171,13 @@ the spreadsheet will be able to inspect these properties and learn the
 API key. There does not seem to be a way to avoid this, so be careful
 about using this if you don't trust the editors of the account.  This
 emphasies the wisdom of using a GitHub account with minimal access to
-create the access token.]*
+create the access token.
+
+The Github recommened way of authenticating apps like this one seems
+to be to use the OAuth2 protocol.  However, implementing this looks
+especially complicated and is currently deferred as a step for the
+future. There are details in [Ben Collins article][] about using the
+Gitub API from Google Scripts.]*
 
 *[**Changing Properties**: I have found that the Script Properties tab
 only allowed new properties to be added the first time I used it.
@@ -275,3 +281,4 @@ to check this.)
 [data-capture]: https://github.com/SolidarityEconomyAssociation/data-capture
 [open-data]: https://github.com/SolidarityEconomyAssociation/open-data
 [Properties Service API]: https://developers.google.com/apps-script/guides/properties
+[Ben Collins article]: https://www.benlcollins.com/apps-script/oauth-github/
