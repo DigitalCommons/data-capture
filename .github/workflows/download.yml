@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       data:
-        description: 'CSV-encoded spreadsheet cell data'
+        description: 'base64-gzip-encoded CSV spreadsheet cell data'
         required: true
       
 env:
@@ -32,7 +32,7 @@ jobs:
     - name: Get data
       run: |-
         mkdir -p "${FILE%/*}"
-        cat >"$FILE" <<'HERE'
+        base64 -d <<'HERE' | gzip -d >"$FILE"
         ${{ github.event.inputs.data }}
         HERE
 
