@@ -55,7 +55,7 @@ Google spreadsheet.
 The main customisation this file will need is the correct URL for
 downloads. Possibly, the data file's extension might need to change if
 it is not CSV, or extra processing steps
-added. See [ADDING NEW SOURCES][#adding-new-sources].
+added. See [ADDING NEW SOURCES](#adding-new-sources).
 
 ### [`src/spreadsheet-trigger.gs`][spreadsheet-trigger.gs]
 
@@ -65,7 +65,7 @@ to download.
 
 It needs certain script properties defined to configure the
 repository, API token and branch to
-notify. See [ADDING NEW SOURCES][#adding-new-sources]
+notify. See [ADDING NEW SOURCES](#adding-new-sources)
 
 ## Data branches
 
