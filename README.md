@@ -163,7 +163,7 @@ property rows as follows:
 - `api_url` - The URL for the workflow dispatch API call. i.e.
   `https://api.github.com/repos/SolidarityEconomyAssociation/data-capture/actions/workflows/download.yml/dispatches`
 
-*[**Security**: Google "Script Properties" are associated with this
+**Security**: Google "Script Properties" are associated with this
 script only, and are not duplicated along with the script if someone
 makes a copy. This is important to avoid leaking sensitive information
 like the `api_key`.  However, beware that anyone with editor access to
@@ -172,6 +172,11 @@ API key. There does not seem to be a way to avoid this, so be careful
 about using this if you don't trust the editors of the account.  This
 emphasies the wisdom of using a GitHub account with minimal access to
 create the access token.
+
+Not only this, the google account used to create and trigger the script
+should not be one with any access to anything sensitive, as it appears
+that the script executes with the rights of this account, and could be
+modified to edit or delete other resources the user has access to.
 
 The Github recommened way of authenticating apps like this one seems
 to be to use the OAuth2 protocol.  However, implementing this looks
@@ -189,14 +194,14 @@ To use it, a [personal access token][creating a personal access token]
 needs to be created usnig the `sea-bot` account, with `repo` access
 scope, and the `sea-bot` user granted "Write" access to the
 repository. These are inserted into the Google Script's properties as
-described above.]*
+described above.
 
-*[**Changing Properties**: I have found that the Script Properties tab
+**Changing Properties**: I have found that the Script Properties tab
 only allowed new properties to be added the first time I used it.
 Subsequently there seemed to be no means to add or modify the
 properties!  However, I was able to work around this by modifying the
 script to add a function which setting the properties via
-the [Properties Service API][], and running that.]*
+the [Properties Service API][], and running that.
 
 Having set the properties, select the menu item *Edit -> Current
 project's trigger*. This will open a new browser tab containing a
