@@ -147,7 +147,7 @@ property rows as follows:
 - `user_name` - The name of the GitHub user account to authenticate as
 - `api_key` - The value should be a GitHub access token created with
   the aforementioned account, which has been granted `repo`
-  permission.  See [creating a personal access token][]o for
+  permission.  See [creating a personal access token][] for
   instructions. The token should be treated as a password would and
   kept safe and secure from abuse. Also, ideally the account
   associated will be a dedicated one with the minimim access
