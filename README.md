@@ -299,4 +299,4 @@ to check this.)
 [open-data]: https://github.com/SolidarityEconomyAssociation/open-data
 [Properties Service API]: https://developers.google.com/apps-script/guides/properties
 [Ben Collins article]: https://www.benlcollins.com/apps-script/oauth-github/
-[sea-bot]: 
+[sea-bot]: https://github.com/sea-bot
