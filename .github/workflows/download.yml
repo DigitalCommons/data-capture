@@ -1,10 +1,14 @@
 name: Data download
 
 # Usage: see README.md
-on: workflow_dispatch
-
+on:
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'base64-gzip-encoded CSV spreadsheet cell data'
+        required: true
+      
 env:
-  URL: https://docs.google.com/spreadsheets/d/<ref>/gviz/tq?tqx=out:csv&gid=0&headers=1
   FILE: data.csv
   AUTHOR_NAME: ${{ github.actor }}
   AUTHOR_EMAIL: github-actions@solidarityeconomy.coop
@@ -26,7 +30,11 @@ jobs:
         echo "FILE=${REF#refs/heads/}/$FILE" >> $GITHUB_ENV
 
     - name: Get data
-      run: curl "$URL" --create-dirs --output "$FILE"
+      run: |-
+        mkdir -p "${FILE%/*}"
+        base64 -d <<'HERE' | gzip -d >"$FILE"
+        ${{ github.event.inputs.data }}
+        HERE
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v5
